@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReadFlow — Sarai Deshmukh</title>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --forest:  #2d6a4f;
+    --teal:    #2d6a4f;
+    --teal-dk: #1f4f3a;
+    --teal-lt: #e8f5f1;
+    --white:   #ffffff;
+    --off:     #f7f7f7;
+    --coal:    #1c1c1a;
+    --mid:     #4a4a45;
+    --mist:    #c8dfd8;
+    --orange:  #e8813a;
+    --cream:   #fdf6e3;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--coal); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--white); border-bottom: 1px solid rgba(0,0,0,0.07);
+    display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 3.5rem;
+  }
+  .nav-logo { font-family: 'Zilla Slab', serif; font-weight: 700; font-size: 1.1rem; color: var(--teal); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { background: var(--teal); color: #fff !important; padding: 0.45rem 1.1rem; border-radius: 100px; font-weight: 600 !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--teal-dk) !important; }
+
+  /* HERO */
+  .hero { min-height: 100vh; background: var(--forest); display: grid; grid-template-rows: 1fr auto; padding-top: 64px; position: relative; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; }
+  .b1 { width: 380px; height: 380px; background: rgba(255,255,255,0.04); top: -100px; right: -100px; border-radius: 50%; }
+  .b2 { width: 220px; height: 220px; background: rgba(26,122,94,0.3); bottom: 80px; right: 140px; border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%; }
+  .b3 { width: 160px; height: 160px; background: rgba(26,122,94,0.2); top: 35%; left: -50px; border-radius: 50%; }
+  .floater { position: absolute; font-size: 2rem; opacity: 0.1; animation: float 6s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-18px) rotate(5deg); } }
+
+  .hero-content { position: relative; z-index: 10; display: flex; flex-direction: column; justify-content: center; padding: 4rem 3.5rem 2rem; max-width: 820px; }
+
+  /* Logo strip */
+  .hero-logo-wrap {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.7s ease 0.05s forwards;
+  }
+  .hero-logo-img { height: 56px; width: auto; border-radius: 10px; background: rgba(255,255,255,0.08); padding: 6px; }
+  .hero-logo-name { font-family: 'Zilla Slab', serif; font-size: 2.2rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+
+  .hero-label { font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; opacity: 0; animation: fadeUp 0.7s ease 0.2s forwards; }
+  .hero-title { font-family: 'Zilla Slab', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; color: #fff; line-height: 1.08; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease 0.32s forwards; }
+  .hero-title em { font-style: italic; color: var(--orange); }
+  .hero-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.65); max-width: 540px; line-height: 1.75; margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease 0.44s forwards; }
+
+  .hero-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--orange); color: var(--coal); font-family: 'Zilla Slab', serif;
+    font-weight: 700; font-size: 0.95rem; padding: 0.8rem 1.75rem; border-radius: 100px;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25); width: fit-content;
+    opacity: 0; animation: fadeUp 0.8s ease 0.55s forwards;
+  }
+  .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+  .hero-meta { position: relative; z-index: 10; display: flex; gap: 2.5rem; padding: 1.75rem 3.5rem 3rem; border-top: 1px solid rgba(255,255,255,0.08); flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease 0.65s forwards; }
+  .meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
+  .meta-label { font-size: 0.62rem; font-weight: 500; color: rgba(255,255,255,0.35); letter-spacing: 0.14em; text-transform: uppercase; }
+  .meta-value { font-size: 0.9rem; color: rgba(255,255,255,0.85); font-weight: 400; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+  section { padding: 5rem 3.5rem; }
+  .section-tag { font-size: 0.65rem; font-weight: 500; color: var(--teal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem; }
+  .section-tag::before { content: ''; width: 1.5rem; height: 2px; background: var(--teal); display: block; }
+  h2 { font-family: 'Zilla Slab', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.15; color: var(--coal); margin-bottom: 1.5rem; }
+  p { font-size: 1rem; line-height: 1.8; color: var(--mid); max-width: 660px; }
+
+  /* PROBLEM */
+  .problem { background: var(--off); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .problem-quote { font-family: 'Zilla Slab', serif; font-size: 1.4rem; font-style: italic; color: var(--teal-dk); line-height: 1.45; border-left: 3px solid var(--teal); padding-left: 1.25rem; margin-top: 0.5rem; }
+
+  /* STATS */
+  .stats-band { background: var(--forest); padding: 4rem 3.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .stat-card { border: 1px solid rgba(255,255,255,0.08); padding: 2rem 1.5rem; transition: border-color 0.25s; }
+  .stat-card:hover { border-color: var(--teal); }
+  .stat-number { font-family: 'Zilla Slab', serif; font-size: 2.8rem; font-weight: 700; color: var(--mist); line-height: 1; margin-bottom: 0.3rem; }
+  .stat-unit { font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 0.75rem; }
+  .stat-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.55; }
+
+  /* HOW IT WORKS */
+  .how { background: var(--white); }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+  .how-card { padding: 2rem; background: var(--off); border: 1px solid rgba(0,0,0,0.05); transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
+  .how-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); }
+  .how-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,122,94,0.1); }
+  .how-icon { font-size: 1.6rem; margin-bottom: 0.85rem; display: block; }
+  .how-title { font-family: 'Zilla Slab', serif; font-size: 1.05rem; font-weight: 700; color: var(--coal); margin-bottom: 0.5rem; }
+  .how-desc { font-size: 0.87rem; color: var(--mid); line-height: 1.65; max-width: none; }
+
+  /* FEATURES */
+  .features { background: var(--teal-lt); }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2.5rem; max-width: 800px; }
+  .feature-card { background: var(--white); padding: 1.75rem; border: 1px solid rgba(26,122,94,0.12); }
+  .feature-tag { display: inline-block; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.25rem 0.65rem; margin-bottom: 0.85rem; background: var(--teal-lt); color: var(--teal-dk); border: 1px solid var(--mist); }
+  .feature-title { font-family: 'Zilla Slab', serif; font-size: 1rem; font-weight: 700; color: var(--coal); margin-bottom: 0.4rem; }
+  .feature-desc { font-size: 0.85rem; color: var(--mid); line-height: 1.65; max-width: none; }
+
+  /* WORKSHOPS */
+  .workshops { background: var(--white); }
+  .workshop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+  .workshop-card { border: 1px solid rgba(0,0,0,0.06); overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+  .workshop-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .workshop-img { width: 100%; height: 210px; object-fit: cover; object-position: center; display: block; }
+  .workshop-img-placeholder { width: 100%; height: 210px; background: var(--teal-lt); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+  .workshop-info { padding: 1.25rem 1.5rem; background: var(--off); }
+  .workshop-title { font-family: 'Zilla Slab', serif; font-size: 1rem; font-weight: 700; color: var(--coal); margin-bottom: 0.25rem; }
+  .workshop-meta { font-size: 0.78rem; color: #999; }
+
+  /* TEAM */
+  .team { background: var(--off); }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+  .team-card { background: var(--white); padding: 2rem 1.5rem; text-align: center; border: 1px solid rgba(0,0,0,0.05); transition: transform 0.25s, box-shadow 0.25s; }
+  .team-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,122,94,0.1); }
+  .team-avatar { width: 68px; height: 68px; border-radius: 50%; margin: 0 auto 1rem; background: var(--teal-lt); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; border: 2px solid var(--mist); }
+  .team-avatar.filled { background: var(--teal); border-color: var(--teal-dk); }
+  .team-name { font-family: 'Zilla Slab', serif; font-size: 1rem; font-weight: 700; color: var(--coal); margin-bottom: 0.25rem; }
+  .team-role { font-size: 0.78rem; color: var(--teal); font-weight: 500; margin-bottom: 0.5rem; }
+  .team-empty { font-size: 0.75rem; color: #bbb; font-style: italic; }
+  .team-badge { display: inline-block; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; background: var(--teal); color: #fff; margin-top: 0.35rem; }
+
+  /* CTA */
+  .cta-section { background: var(--forest); padding: 5rem 3.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .cta-section h2 { color: #fff; }
+  .cta-section .section-tag { color: rgba(255,255,255,0.4); }
+  .cta-section .section-tag::before { background: rgba(255,255,255,0.25); }
+  .cta-section > div > p { color: rgba(255,255,255,0.55); max-width: none; }
+  .cta-links { display: flex; flex-direction: column; gap: 1rem; }
+  .cta-link-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 1rem; transition: background 0.2s; }
+  .cta-link-card:hover { background: rgba(255,255,255,0.1); }
+  .cta-link-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .cta-link-title { font-family: 'Zilla Slab', serif; font-weight: 700; font-size: 0.95rem; color: #fff; }
+  .cta-link-sub { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.15rem; }
+
+  footer { background: var(--coal); padding: 1.75rem 3.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+  footer p { font-size: 0.72rem; color: rgba(255,255,255,0.25); max-width: none; }
+  footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.6); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    nav, section, .stats-band, .cta-section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .problem, .how-grid, .cta-section, .features-grid, .workshop-grid, .team-grid { grid-template-columns: 1fr; }
+    .stats-band { grid-template-columns: 1fr 1fr; }
+    .hero-content { padding: 3rem 1.5rem 2rem; }
+    .hero-meta { padding: 1.5rem 1.5rem 2.5rem; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://www.sarai.quest/">Sarai.</a>
+  <ul class="nav-links">
+    <li><a href="https://www.sarai.quest/s-projects-side-by-side">Projects</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="https://readflow.sarai.quest/" class="nav-cta" target="_blank">Try ReadFlow →</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="floater" style="top:15%;right:18%;animation-delay:0s;">📚</div>
+  <div class="floater" style="top:55%;right:8%;animation-delay:1.5s;font-size:1.4rem;">✏️</div>
+  <div class="floater" style="top:28%;right:38%;animation-delay:3s;font-size:1.1rem;">⭐</div>
+  <div class="floater" style="bottom:28%;left:8%;animation-delay:2s;">🎯</div>
+
+  <div class="hero-content">
+    <!-- LOGO: replace logo.png with your actual logo filename once uploaded to GitHub -->
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="ReadFlow" class="hero-logo-img" onerror="this.style.display='none'">
+      <span class="hero-logo-name">ReadFlow</span>
+    </div>
+    <span class="hero-label">Ed-Tech Project · Literacy & Learning</span>
+    <h1 class="hero-title">Reading that <em>grows</em><br>with every child.</h1>
+    <p class="hero-subtitle">A research-driven, gamified reading portal for children aged 5–11. CEFR-aligned, dyslexia-friendly, and built for Indian classrooms.</p>
+    <a href="https://readflow.sarai.quest/" class="hero-btn" target="_blank">Try ReadFlow →</a>
+  </div>
+
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Age Group</span><span class="meta-value">5 – 11 years</span></div>
+    <div class="meta-item"><span class="meta-label">Framework</span><span class="meta-value">CEFR Aligned</span></div>
+    <div class="meta-item"><span class="meta-label">Schools</span><span class="meta-value">4 schools, Amravati</span></div>
+    <div class="meta-item"><span class="meta-label">Users</span><span class="meta-value">30+ active learners</span></div>
+    <div class="meta-item"><span class="meta-label">Live at</span><span class="meta-value" style="color:var(--orange);">readflow.sarai.quest</span></div>
+  </div>
+</section>
+
+<section class="problem" id="about">
+  <div>
+    <span class="section-tag">The Problem</span>
+    <h2>Early reading deserves more than drills.</h2>
+    <p>Research on primary classrooms suggests that reading lessons in India tend to focus heavily on grammar and spelling practice. While these are valuable skills, there's often less structured support for fluency, vocabulary, and comprehension — the foundations that help children actually enjoy and understand what they read.</p>
+    <br>
+    <p>As Chapter Head of ReadItOut, I've spent time running reading workshops with children and seen how much of a difference the right activity at the right level can make. That experience is what led me to build ReadFlow.</p>
+  </div>
+  <div>
+    <p class="problem-quote">"When children engage with reading at the right level, in the right way — the progress is remarkable."</p>
+    <br><br>
+    <p>ReadFlow replaces passive drilling with adaptive, gamified activities — giving every child a personalised path to literacy, benchmarked against the Common European Framework of Reference (CEFR).</p>
+  </div>
+</section>
+
+<div class="stats-band">
+  <div class="stat-card reveal">
+    <div class="stat-number">30+</div>
+    <span class="stat-unit">Active users</span>
+    <p class="stat-desc">Students using ReadFlow with noticeable improvements in reading ability.</p>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-number">4</div>
+    <span class="stat-unit">Schools</span>
+    <p class="stat-desc">Integrated locally in Amravati across different school types.</p>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-number">15</div>
+    <span class="stat-unit">Activities</span>
+    <p class="stat-desc">Across 5 categories — vocabulary, comprehension, pronunciation, spelling, and grammar.</p>
+  </div>
+  <div class="stat-card reveal">
+    <div class="stat-number">5–11</div>
+    <span class="stat-unit">Age range</span>
+    <p class="stat-desc">Designed specifically for early and primary school learners.</p>
+  </div>
+</div>
+
+<section class="how" id="how">
+  <span class="section-tag">How It Works</span>
+  <h2>From assessment to growth — automatically.</h2>
+  <p>ReadFlow adapts to each child's strengths and gaps in real time, using a CEFR-aligned framework to keep learning always at the right level.</p>
+  <div class="how-grid">
+    <div class="how-card reveal">
+      <span class="how-icon">🧪</span>
+      <div class="how-title">Start with an assessment</div>
+      <p class="how-desc">Every child begins with a placement assessment that identifies their CEFR level — so they start exactly where they need to.</p>
+    </div>
+    <div class="how-card reveal">
+      <span class="how-icon">🎮</span>
+      <div class="how-title">Learn through 15 activities</div>
+      <p class="how-desc">Gamified activities across 5 categories. Difficulty adapts automatically as children demonstrate growth or need more support.</p>
+    </div>
+    <div class="how-card reveal">
+      <span class="how-icon">📈</span>
+      <div class="how-title">Track progress in real time</div>
+      <p class="how-desc">Weekly progress reports, real-time hints, and teacher/parent dashboards ensure continuous guidance and monitoring.</p>
+    </div>
+    <div class="how-card reveal">
+      <span class="how-icon">⚖️</span>
+      <div class="how-title">Weighted scoring system</div>
+      <p class="how-desc">Vocabulary and comprehension receive the highest weighting — the skills that matter most for real-world literacy.</p>
+    </div>
+    <div class="how-card reveal">
+      <span class="how-icon">👩‍🏫</span>
+      <div class="how-title">Teacher-led personalisation</div>
+      <p class="how-desc">Teachers can structure lessons to the individual. Parents can monitor progress and reinforce learning at home.</p>
+    </div>
+    <div class="how-card reveal">
+      <span class="how-icon">🌍</span>
+      <div class="how-title">Globally benchmarked</div>
+      <p class="how-desc">CEFR alignment means every child's progress is measured against an internationally recognised standard.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <span class="section-tag">Built For Everyone</span>
+  <h2>Inclusive by design.</h2>
+  <p>ReadFlow was built with equity at its core — every design decision prioritises access, affordability, and inclusion.</p>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <span class="feature-tag">Accessibility</span>
+      <div class="feature-title">Dyslexia-friendly design</div>
+      <p class="feature-desc">Typography, spacing, and colour choices are optimised for children with dyslexia — so every child can engage fully.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-tag">Affordability</span>
+      <div class="feature-title">Low-cost model</div>
+      <p class="feature-desc">Designed to be accessible to schools with limited budgets — a scalable solution, not a premium one.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-tag">Adaptivity</span>
+      <div class="feature-title">Always the right level</div>
+      <p class="feature-desc">The platform continuously adjusts difficulty based on each child's performance — never too easy, never overwhelming.</p>
+    </div>
+    <div class="feature-card reveal">
+      <span class="feature-tag">Monitoring</span>
+      <div class="feature-title">Parent & teacher dashboards</div>
+      <p class="feature-desc">Real-time visibility for adults means learning doesn't stop at the classroom door.</p>
+    </div>
+  </div>
+</section>
+
+<section class="workshops" id="workshops">
+  <span class="section-tag">In the Field</span>
+  <h2>Workshops & school sessions.</h2>
+  <p>ReadFlow isn't just a platform — it's been taken into classrooms, tested with real children, and refined through hands-on workshops.</p>
+  <div class="workshop-grid">
+    <div class="workshop-card reveal">
+      <!-- Replace workshop1.jpg with your actual image filename after uploading to GitHub -->
+      <img src="workshop1.jpg" alt="Workshop session" class="workshop-img" onerror="this.outerHTML='<div class=\'workshop-img-placeholder\'>📚</div>'">
+      <div class="workshop-info">
+        <div class="workshop-title">Jeevan School Workshop</div>
+        <div class="workshop-meta">ReadFlow demo session · Amravati</div>
+      </div>
+    </div>
+    <div class="workshop-card reveal">
+      <!-- Replace workshop2.jpg with your actual image filename -->
+      <img src="workshop2.jpg" alt="Presentation session" class="workshop-img" onerror="this.outerHTML='<div class=\'workshop-img-placeholder\'>🎯</div>'">
+      <div class="workshop-info">
+        <div class="workshop-title">Orchid School Presentation</div>
+        <div class="workshop-meta">Live demo with students · Amravati</div>
+      </div>
+    </div>
+    <div class="workshop-card reveal">
+      <!-- Replace workshop3.jpg with your actual image filename -->
+      <img src="workshop3.jpg" alt="Student session" class="workshop-img" onerror="this.outerHTML='<div class=\'workshop-img-placeholder\'>⭐</div>'">
+      <div class="workshop-info">
+        <div class="workshop-title">Student Engagement Session</div>
+        <div class="workshop-meta">Hands-on reading activities · Amravati</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <span class="section-tag">The Team</span>
+  <h2>Who's behind ReadFlow.</h2>
+  <p>ReadFlow is a student-led initiative. We're looking for passionate people to join the mission.</p>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar filled">👩‍💻</div>
+      <div class="team-name">Sarai Deshmukh</div>
+      <div class="team-role">Project Lead & Founder</div>
+      <span class="team-badge">Founder</span>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">🧑‍🎨</div>
+      <div class="team-name" style="color:#bbb;">Open Position</div>
+      <div class="team-role" style="color:#ccc;">UX / Design</div>
+      <p class="team-empty">Interested? Get in touch.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">🧑‍💻</div>
+      <div class="team-name" style="color:#bbb;">Open Position</div>
+      <div class="team-role" style="color:#ccc;">Development</div>
+      <p class="team-empty">Interested? Get in touch.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">🧑‍🏫</div>
+      <div class="team-name" style="color:#bbb;">Open Position</div>
+      <div class="team-role" style="color:#ccc;">Education Advisor</div>
+      <p class="team-empty">Interested? Get in touch.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div>
+    <span class="section-tag">Try It Out</span>
+    <h2>ReadFlow is live.</h2>
+    <p>The platform is running, integrated in local schools, and open for more partnerships. If you're a school, parent, or researcher — let's connect.</p>
+  </div>
+  <div class="cta-links">
+    <a href="https://readflow.sarai.quest/" class="cta-link-card" target="_blank">
+      <span class="cta-link-icon">🚀</span>
+      <div><div class="cta-link-title">Open ReadFlow</div><div class="cta-link-sub">readflow.sarai.quest</div></div>
+    </a>
+    <a href="https://www.sarai.quest/s-projects-side-by-side" class="cta-link-card">
+      <span class="cta-link-icon">🗂️</span>
+      <div><div class="cta-link-title">More Projects</div><div class="cta-link-sub">Back to sarai.quest</div></div>
+    </a>
+    <a href="https://www.sarai.quest" class="cta-link-card">
+      <span class="cta-link-icon">✉️</span>
+      <div><div class="cta-link-title">Get in Touch</div><div class="cta-link-sub">For school partnerships or collaborations</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Sarai Deshmukh · <a href="https://www.sarai.quest">sarai.quest</a></p>
+  <p>ReadFlow · Gamified Literacy for Children</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const siblings = [...(entry.target.parentElement?.children || [])];
+      const delay = siblings.length > 1 ? siblings.indexOf(entry.target) * 80 : 0;
+      setTimeout(() => entry.target.classList.add('visible'), delay);
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
