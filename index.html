@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ReadFlow — Sarai Deshmukh</title>
 <meta name="description" content="ReadFlow is a free, research-backed reading platform for children aged 5–11. CEFR-based, dyslexia-friendly, and officially recognised by the Zilla Parishad Amravati.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="readflow-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,700;1,9..144,800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -113,6 +115,7 @@
   .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
   .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
   .brand:hover { color: var(--ink); }
+  .brand-mark { width: 48px; height: 48px; flex: none; }
   .logo-tile {
     width: 44px; height: 44px; flex: none; display: grid; place-items: center;
     border: 2px solid var(--ink); border-radius: 12px; background: var(--sun); box-shadow: var(--lift-sm);
@@ -149,13 +152,16 @@
 
   /* ---------- Hero ---------- */
   .hero { padding-block: 64px 72px; overflow: hidden; }
-  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 56px; align-items: center; }
-  .hero-copy { display: flex; flex-direction: column; gap: 22px; }
+  .hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    grid-template-areas: "head logo" "rest logo"; column-gap: 56px; row-gap: 22px; align-items: end;
+  }
+  .hero-head { grid-area: head; display: flex; flex-direction: column; gap: 22px; }
+  .hero-rest { grid-area: rest; display: flex; flex-direction: column; gap: 22px; align-self: start; }
   .hero h1 { font-size: clamp(2.7rem, 6.4vw, 4.9rem); font-weight: 800; line-height: 1.02; }
   .hero-lead { font-size: 1.22rem; color: var(--ink-soft); max-width: 560px; }
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
-  .hero-logo { margin: 0; position: relative; }
-  .hero-logo img { width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 28px; box-shadow: 0 8px 0 var(--ink); background: var(--card); }
+  .hero-logo { grid-area: logo; align-self: center; justify-self: center; width: 100%; max-width: 440px; height: auto; }
 
   .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 52px; }
   .stat { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 4px; }
@@ -353,8 +359,11 @@
   @media (max-width: 860px) {
     section { padding-block: 64px; }
     .hero { padding-block: 40px 56px; }
-    .hero-grid, .goal-card, .join-grid, .why-grid { grid-template-columns: minmax(0, 1fr); }
-    .hero-logo { order: -1; max-width: 520px; }
+    .goal-card, .join-grid, .why-grid { grid-template-columns: minmax(0, 1fr); }
+    .hero-grid { grid-template-columns: minmax(0, 1fr) clamp(104px, 30vw, 260px); grid-template-areas: "head logo" "rest rest"; column-gap: 16px; }
+    .hero-logo { align-self: end; }
+    .hero h1 { font-size: clamp(2.05rem, 8.4vw, 3.6rem); }
+    .hero .badge { font-size: 0.68rem; letter-spacing: 0.03em; padding: 5px 10px; }
     .why-col { padding-right: 0; }
     .why-col + .why-col { padding-left: 0; border-left: 0; border-top: 2px dashed var(--divider); padding-top: 32px; margin-top: 32px; }
     .join-aside { position: static; }
@@ -406,7 +415,7 @@
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="ReadFlow, back to top">
-      <span class="logo-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span>
+      <img class="brand-mark" src="readflow-mark.png" alt="" width="48" height="48">
       <span class="brand-name">ReadFlow</span>
     </a>
     <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
@@ -432,18 +441,18 @@
     <div class="blob" aria-hidden="true" style="width:320px;height:320px;left:-180px;bottom:-60px;background:var(--sky);opacity:.7"></div>
     <div class="wrap">
       <div class="hero-grid">
-        <div class="hero-copy">
+        <div class="hero-head">
           <span class="badge">Designed for every learner</span>
           <h1 id="hero-title">Step by step, <em class="hl">word by word.</em></h1>
-          <p class="hero-lead">ReadFlow is a free, research-backed reading platform for children aged 5–11, built to make reading practice feel less like homework and more like something children actually want to do.</p>
+        </div>
+        <div class="hero-rest">
+          <p class="hero-lead">ReadFlow is a free, research-backed reading platform for children aged <span style="white-space:nowrap">5–11</span>, built to make reading practice feel less like homework and more like something children actually want to do.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="https://readflow.sarai.quest/" target="_blank" rel="noopener">Try ReadFlow — it's free <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn btn-secondary" href="#join">Join the team</a>
           </div>
         </div>
-        <figure class="hero-logo">
-          <img id="hero-logo-img" src="readflowlogo.jpeg" alt="ReadFlow logo" width="988" height="551">
-        </figure>
+        <img class="hero-logo" id="hero-logo-img" src="readflow-logo.png" alt="ReadFlow logo: a child reading a book" width="879" height="900">
       </div>
 
       <div class="stats">
@@ -814,7 +823,7 @@
 
   function applySettings(s) {
     if (!s) return;
-    if (s.logo) document.getElementById('hero-logo-img').src = src(s.logo);
+    if (s.logo && s.logo !== 'readflowlogo.jpeg') document.getElementById('hero-logo-img').src = src(s.logo);
     document.querySelectorAll('[data-setting]').forEach(n => {
       const v = s[n.dataset.setting];
       if (v) n.textContent = v;
