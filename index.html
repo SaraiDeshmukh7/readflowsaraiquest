@@ -185,7 +185,8 @@
   .recog-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
   .recog-photos.single { grid-template-columns: minmax(0, 1fr); }
   .photo-frame { margin: 0; display: flex; flex-direction: column; gap: 8px; }
-  .photo-frame img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 2px solid var(--ink); border-radius: 18px; background: var(--field); }
+  .photo-frame .frame { height: clamp(300px, 34vw, 440px); padding: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid var(--ink); border-radius: 18px; background: var(--paper); }
+  .photo-frame img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; min-width: 0; min-height: 0; object-fit: contain; border-radius: 8px; }
   .photo-frame figcaption { font-size: 0.9rem; color: var(--ink-soft); font-weight: 600; }
 
   /* ---------- Goal ---------- */
@@ -242,8 +243,8 @@
   .group-meta { font-weight: 700; color: var(--muted); font-size: 0.95rem; }
   .group-caption { color: var(--ink-soft); font-size: 1rem; margin-top: 2px; }
   .group-count { font-size: 0.85rem; font-weight: 800; color: var(--ink-soft); padding: 4px 10px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--card); }
-  .photo-card { margin: 0; width: min(420px, 80vw); border: 2px solid var(--ink); border-radius: 20px; overflow: hidden; box-shadow: var(--lift); background: var(--field); }
-  .photo-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .photo-card { margin: 0; border: 2px solid var(--ink); border-radius: 20px; overflow: hidden; box-shadow: var(--lift); background: var(--paper); }
+  .photo-card img { height: clamp(200px, 24vw, 300px); width: auto; max-width: min(620px, 84vw); object-fit: contain; }
 
   /* ---------- Horizontal scrollers ---------- */
   .scroller-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
@@ -382,6 +383,7 @@
     .feature-grid, .steps, .row-2, .skills { grid-template-columns: minmax(0, 1fr); }
     .hero-ctas .btn { width: 100%; }
     .recog-photos { grid-template-columns: minmax(0, 1fr); }
+    .photo-frame .frame { height: 380px; }
     .recog-head { align-items: flex-start; }
     .scroll-btns { display: none; }
   }
@@ -820,7 +822,7 @@
     box.replaceChildren();
     if (!photos.length) { box.hidden = true; return; }
     photos.forEach(p => box.append(el('figure', { class: 'photo-frame' },
-      el('img', { src: src(p.image), alt: p.caption || 'ReadFlow recognition by the Zilla Parishad Amravati', loading: 'lazy' }),
+      el('div', { class: 'frame' }, el('img', { src: src(p.image), alt: p.caption || 'ReadFlow recognition by the Zilla Parishad Amravati', loading: 'lazy' })),
       p.caption && el('figcaption', { text: p.caption }))));
     box.classList.toggle('single', photos.length === 1);
     box.hidden = false;
