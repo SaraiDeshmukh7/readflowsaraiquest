@@ -1,36 +1,35 @@
 {
   "sessions": [
     {
-      "image": "neevamsession.jpeg",
-      "title": "ReadFlow PlayLabs session",
+      "title": "",
       "school": "Neevam School",
       "place": "Amravati",
       "date": "",
-      "caption": "ReadFlow demo session"
+      "caption": "ReadFlow demo session",
+      "photos": [
+        "neevamsession.jpeg"
+      ]
     },
     {
-      "image": "orchidsession.jpeg",
-      "title": "ReadFlow PlayLabs session",
+      "title": "",
       "school": "Orchid School",
       "place": "Amravati",
       "date": "",
-      "caption": "Live demo with students"
+      "caption": "Live demo with students and a whole-school presentation",
+      "photos": [
+        "orchidsession.jpeg",
+        "orchidschoolpresentation.jpg"
+      ]
     },
     {
-      "image": "orchidschoolpresentation.jpg",
-      "title": "Whole-school presentation",
-      "school": "Orchid School",
-      "place": "Amravati",
-      "date": "",
-      "caption": "Introducing ReadFlow to the whole school"
-    },
-    {
-      "image": "tomoaesession.jpeg",
-      "title": "ReadFlow PlayLabs session",
+      "title": "",
       "school": "Tomoae Montessori",
       "place": "Amravati",
       "date": "",
-      "caption": "Hands-on reading activities"
+      "caption": "Hands-on reading activities",
+      "photos": [
+        "tomoaesession.jpeg"
+      ]
     }
   ]
 }
