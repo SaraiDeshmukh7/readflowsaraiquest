@@ -297,8 +297,8 @@
   .session-meta { font-size: 0.92rem; color: var(--muted); font-weight: 700; }
   .session-caption { color: var(--ink-soft); font-size: 0.98rem; }
 
-  .member { width: min(260px, 70vw); padding: 24px 22px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
-  .avatar { width: 112px; height: 112px; border-radius: 50%; border: 2.5px solid var(--ink); box-shadow: var(--lift-sm); object-fit: cover; background: var(--butter); display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 2.2rem; }
+  .member { width: min(280px, 72vw); padding: 24px 22px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+  .avatar { width: 136px; height: 136px; border-radius: 50%; border: 2.5px solid var(--ink); box-shadow: var(--lift-sm); object-fit: cover; background: var(--butter); display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 2.2rem; }
   .member-name { font-family: var(--display); font-weight: 800; font-size: 1.2rem; margin-top: 6px; }
   .member-role { font-weight: 800; color: var(--rust); font-size: 0.95rem; }
   .member-bio { font-size: 0.95rem; color: var(--ink-soft); }
@@ -542,10 +542,10 @@
       </div>
       <div class="story-body">
         <p><strong>It all started with a question we kept coming back to during our reading workshops.</strong></p>
-        <p>In most classrooms, we noticed, reading instruction focuses heavily on spelling, grammar, and pronunciation. So we decided to dig deeper. Research shows that vocabulary and comprehension are far stronger long-term markers of reading success, especially for children (Scarborough, 2001; Nation &amp; Snowling, 2004). Out of this frustration, ReadFlow was born.</p>
+        <p>In most classrooms, we noticed, reading instruction focuses heavily on spelling, grammar, and pronunciation. So we decided to dig deeper. Research shows that vocabulary and comprehension are far stronger long-term markers of reading success, especially for children (Reed et al., 2016; Oakhill &amp; Cain, 2012; Hjetland et al., 2017). Out of this frustration, ReadFlow was born.</p>
         <p>ReadFlow is a free, research-based, gamified reading platform for children aged 5 to 11. It uses the Common European Framework of Reference for Languages (CEFR) to assess reading ability and personalise practice. While ReadFlow covers pronunciation, reading speed, and spelling, we place a much stronger emphasis on reading comprehension and building vocabulary.</p>
         <p>We are also designing it specifically to support dyslexic and neurodivergent learners.</p>
-        <p>What started as a rough concept on a whiteboard is now a living project, officially integrated into school curricula and reaching children across Amravati and beyond.</p>
+        <p>What started as a rough concept on a whiteboard is now a living project. ReadFlow is officially integrated into the curriculum of <strong><span data-setting="schools">10+</span> schools</strong>, reaching <strong><span data-setting="students">500+</span> students</strong>.</p>
       </div>
     </div>
   </section>
@@ -572,7 +572,7 @@
         <p><strong>Vocabulary and reading comprehension are the most important markers of reading success. ReadFlow focuses more on these.</strong> Unlike platforms that focus heavily on spelling quizzes and grammar drills, ReadFlow prioritises vocabulary and comprehension while also developing pronunciation, spelling, and grammar. Its assessments reflect the relative importance of these skills in reading development.</p>
         <div class="cite">
           <svg aria-hidden="true"><use href="#i-book"/></svg>
-          <span>Research by Reed et al. (2016), Oakhill and Cain (2012), and Hjetland et al. (2017) helped inform our approach.</span>
+          <span>Research by Reed et al. (2016), Oakhill &amp; Cain (2012), and Hjetland et al. (2017) helped inform our approach.</span>
         </div>
       </div>
     </div>
@@ -874,11 +874,12 @@
     track.replaceChildren();
     if (!items.length) { track.append(el('p', { class: 'empty-note', text: 'New PlayLabs sessions are coming soon.' })); return; }
     items.forEach((s, i) => {
-      const meta = [s.place, s.date].filter(Boolean).join(' · ');
+      const heading = s.title || s.school || 'PlayLabs session';
+      const meta = [s.title ? s.school : '', s.place, s.date].filter(Boolean).join(' · ');
       track.append(el('article', { class: 'card session' },
-        el('img', { src: src(s.image), alt: s.title ? 'ReadFlow PlayLabs at ' + s.title : 'ReadFlow PlayLabs session', loading: i < 3 ? 'eager' : 'lazy', decoding: 'async' }),
+        el('img', { src: src(s.image), alt: 'ReadFlow PlayLabs: ' + [s.title, s.school].filter(Boolean).join(', '), loading: i < 3 ? 'eager' : 'lazy', decoding: 'async' }),
         el('div', { class: 'session-info' },
-          el('span', { class: 'session-title', text: s.title || 'PlayLabs session' }),
+          el('span', { class: 'session-title', text: heading }),
           meta && el('span', { class: 'session-meta', text: meta }),
           s.caption && el('p', { class: 'session-caption', text: s.caption }))));
     });

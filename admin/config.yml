@@ -47,12 +47,13 @@ collections:
             label_singular: Session
             widget: list
             add_to_top: true
-            summary: "{{fields.title}} · {{fields.place}}"
+            summary: "{{fields.title}} · {{fields.school}}"
             thumbnail: image
             hint: The first session is shown first on the page. Drag to reorder.
             fields:
               - { name: image, label: Photo, widget: image }
-              - { name: title, label: School or session name, widget: string }
+              - { name: title, label: Session title, widget: string, hint: "e.g. Story Detectives, or Grade 3 reading games" }
+              - { name: school, label: School name, widget: string, hint: "e.g. Orchid School" }
               - { name: place, label: City, widget: string, required: false }
               - { name: date, label: Date, widget: string, required: false, hint: "Anything readable, e.g. October 2026" }
               - { name: caption, label: Short caption, widget: string, required: false, hint: "One line, e.g. Hands-on reading activities" }
@@ -69,9 +70,9 @@ collections:
             summary: "{{fields.name}} · {{fields.role}}"
             thumbnail: photo
             fields:
-              - { name: photo, label: Photo, widget: image, required: false, hint: "Optional. Without a photo the card shows their initials." }
+              - { name: photo, label: Photo, widget: image, required: false, hint: "A square-ish face photo works best. Without one, the card shows their initials." }
               - { name: name, label: Name, widget: string }
-              - { name: role, label: Role, widget: string }
+              - { name: role, label: Position, widget: string, hint: "e.g. Head of PlayLabs" }
               - { name: bio, label: One-line bio, widget: string, required: false }
               - { name: link, label: "Link (LinkedIn, portfolio…)", widget: string, required: false }
 

@@ -21,8 +21,8 @@ numbers and links all live in `content/*.json`. You edit them in a web editor at
 1. Open the site's `/admin/` page (for example `https://<your-site>/admin/`).
 2. Choose **Sign In Using Access Token** and paste your token. Your browser remembers it.
 3. Open **Website content** and pick what to change:
-   - **ReadFlow PlayLabs**: add a session with a photo, school name, city, date and caption. The newest goes first; drag to reorder.
-   - **Team members**: add a name, role and optional photo, bio and link. With no photo, the card shows initials.
+   - **ReadFlow PlayLabs**: add a session with a photo, session title, school name, city, date and caption. The newest goes first; drag to reorder.
+   - **Team members**: add a photo, name and position, plus an optional bio and link. With no photo, the card shows initials.
    - **What others say**: add a quote, a name and who they are. The section appears on the page once the first one is added.
    - **Official recognition photos**: the two photos beside the Zilla Parishad recognition.
    - **Numbers & links**: students impacted, local schools, Instagram, LinkedIn, contact email.
