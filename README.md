@@ -25,12 +25,12 @@ numbers and links all live in `content/*.json`. You edit them in a web editor at
    - **Team members**: add a photo, name and position, plus an optional bio and link. With no photo, the card shows initials.
    - **What others say**: add a quote, a name and who they are. The section appears on the page once the first one is added.
    - **Official recognition photos**: the two photos beside the Zilla Parishad recognition.
-   - **Numbers & links**: students impacted, local schools, Instagram, LinkedIn, contact email.
+   - **Logo, numbers & links**: the logo at the top, students impacted, local schools, Instagram, LinkedIn, contact email.
 4. Press **Save**. Photos from your phone are shrunk and converted to WebP automatically.
 
 ## "Join the team" form
 
-Applications are emailed to the address in **Numbers & links → Email that receives applications**,
+Applications are emailed to the address in **Logo, numbers & links → Email that receives applications**,
 using the free [FormSubmit](https://formsubmit.co) service. The very first application sends a
 one-time **activation email** to that address: click **Activate** in it once, and every later
 application arrives as a normal email. Send yourself a test application right after this goes live.

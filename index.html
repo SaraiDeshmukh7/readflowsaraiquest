@@ -149,11 +149,13 @@
 
   /* ---------- Hero ---------- */
   .hero { padding-block: 64px 72px; overflow: hidden; }
-  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 56px; align-items: center; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 56px; align-items: center; }
   .hero-copy { display: flex; flex-direction: column; gap: 22px; }
   .hero h1 { font-size: clamp(2.7rem, 6.4vw, 4.9rem); font-weight: 800; line-height: 1.02; }
   .hero-lead { font-size: 1.22rem; color: var(--ink-soft); max-width: 560px; }
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
+  .hero-logo { margin: 0; position: relative; }
+  .hero-logo img { width: 100%; height: auto; border: 2px solid var(--ink); border-radius: 28px; box-shadow: 0 8px 0 var(--ink); background: var(--card); }
 
   .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 52px; }
   .stat { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 4px; }
@@ -162,71 +164,44 @@
   .stat.sun { background: var(--sun); }
   .stat.sage { background: var(--sage); }
 
-  .demo { padding: 26px; display: flex; flex-direction: column; gap: 22px; position: relative; }
-  .demo-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .demo-title { font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
-  .level-chip { padding: 4px 12px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--butter); font-family: var(--display); font-weight: 700; font-size: 0.85rem; }
-  .words { display: flex; flex-wrap: wrap; gap: 10px 8px; font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 1.8rem); line-height: 1.35; letter-spacing: 0.01em; }
-  .w { padding: 2px 11px; border-radius: 12px; }
-  .w.ok { background: var(--sage); }
-  .w.retry { background: var(--blush); text-decoration: underline wavy var(--rust); text-underline-offset: 6px; }
-  .w.now { background: var(--sun); border: 2px solid var(--ink); box-shadow: var(--lift-sm); }
-  .w.next { color: var(--muted); padding-inline: 4px; }
-  .demo-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.88rem; color: var(--ink-soft); font-weight: 600; }
-  .demo-legend span { display: inline-flex; align-items: center; gap: 7px; }
-  .demo-legend i { width: 13px; height: 13px; border-radius: 4px; display: inline-block; }
-  .bar-row { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.95rem; }
-  .bar { height: 18px; border: 2px solid var(--ink); border-radius: 999px; background: var(--field); overflow: hidden; }
-  .bar > div { height: 100%; width: 68%; background: var(--rust); border-right: 2px solid var(--ink); }
-  .demo-feedback { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: var(--info); border: 1.5px solid var(--info-line); color: var(--info-text); font-size: 0.95rem; }
-  .demo-feedback svg { width: 20px; height: 20px; flex: none; margin-top: 2px; }
-
   /* ---------- Recognition ---------- */
-  .recognition { padding-block: 24px 88px; }
-  .recog-card { padding: clamp(24px, 4vw, 44px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: center; background: var(--card); }
-  .recog-card.no-photos { grid-template-columns: minmax(0, 1fr); }
-  .recog-copy { display: flex; flex-direction: column; gap: 18px; }
-  .recog-copy h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 800; line-height: 1.1; }
-  .recog-copy p { color: var(--ink-soft); font-size: 1.06rem; }
-  .recog-copy p strong { color: var(--ink); }
-  .seal { display: inline-flex; align-items: center; gap: 12px; }
-  .seal-icon { width: 52px; height: 52px; flex: none; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--sun); box-shadow: var(--lift-sm); }
-  .seal-icon svg { width: 26px; height: 26px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
-  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--paper); font-weight: 800; font-size: 0.92rem; }
-  .chip svg { width: 16px; height: 16px; }
-  .recog-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .recognition { padding-block: 8px 72px; }
+  .recog-card { padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 28px; }
+  .recog-head { display: flex; align-items: center; gap: 20px; }
+  .recog-head h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.15; }
+  .seal-icon { width: 60px; height: 60px; flex: none; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--sun); box-shadow: var(--lift-sm); }
+  .seal-icon svg { width: 30px; height: 30px; }
+  .recog-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
   .recog-photos.single { grid-template-columns: minmax(0, 1fr); }
   .photo-frame { margin: 0; display: flex; flex-direction: column; gap: 8px; }
-  .photo-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border: 2px solid var(--ink); border-radius: 18px; box-shadow: var(--lift); background: var(--field); }
-  .recog-photos.single .photo-frame img { aspect-ratio: 4 / 3; }
-  .photo-frame figcaption { font-size: 0.88rem; color: var(--ink-soft); font-weight: 600; }
+  .photo-frame img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 2px solid var(--ink); border-radius: 18px; background: var(--field); }
+  .photo-frame figcaption { font-size: 0.9rem; color: var(--ink-soft); font-weight: 600; }
 
-  /* ---------- Story ---------- */
-  .story-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
-  .question { position: sticky; top: 104px; display: flex; flex-direction: column; gap: 20px; }
-  .question blockquote { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.7rem); line-height: 1.12; }
-  .question blockquote em { font-style: italic; color: var(--rust); }
-  .q-mark { width: 64px; height: 64px; display: grid; place-items: center; border: 2.5px solid var(--ink); border-radius: 50%; background: var(--card); box-shadow: var(--lift); font-family: var(--display); font-weight: 800; font-size: 2.4rem; color: var(--rust); line-height: 1; }
-  .story-body { display: flex; flex-direction: column; gap: 20px; font-size: 1.1rem; color: var(--ink-soft); max-width: 62ch; }
-  .story-body p strong { color: var(--ink); }
+  /* ---------- Goal ---------- */
+  .goal { padding-block: 0 88px; }
+  .goal-card { padding: clamp(28px, 5vw, 52px); background: var(--sun); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
+  .goal-card h2 { font-size: clamp(2rem, 4.2vw, 3rem); font-weight: 800; line-height: 1.05; }
+  .goal-card h2 em { font-style: italic; color: var(--rust-deep); }
+  .goal-card p { font-size: 1.15rem; font-weight: 600; color: #4A4238; }
 
-  /* ---------- Research ---------- */
-  .research { background: var(--card); border-block: 2px solid var(--ink); }
-  .pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 18px; align-items: center; }
-  .pillar { padding: 30px; display: flex; flex-direction: column; gap: 40px; min-height: 260px; justify-content: space-between; }
-  .pillar.vocab { background: var(--sage); }
-  .pillar.comp { background: var(--sky); }
-  .pillar-icon { width: 72px; height: 72px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 18px; background: var(--card); font-family: var(--display); font-weight: 800; font-size: 1.9rem; }
-  .pillar-icon svg { width: 36px; height: 36px; }
-  .pillar h3 { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 800; }
-  .pillar p { font-weight: 700; color: var(--ink-soft); }
-  .plus { width: 60px; height: 60px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--sun); box-shadow: var(--lift-sm); font-family: var(--display); font-weight: 800; font-size: 2rem; line-height: 1; }
-  .research-notes { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 24px; margin-top: 36px; align-items: start; }
-  .research-notes > p { font-size: 1.1rem; color: var(--ink-soft); }
-  .research-notes > p strong { color: var(--ink); }
-  .cite { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; border: 1.5px solid var(--info-line); border-radius: 18px; background: var(--info); color: var(--info-text); font-size: 1rem; }
-  .cite svg { width: 24px; height: 24px; flex: none; margin-top: 2px; }
+  /* ---------- Why ReadFlow: story + research ---------- */
+  .why { background: var(--card); border-block: 2px solid var(--ink); }
+  .why-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; }
+  .why-col { display: flex; flex-direction: column; gap: 20px; padding-right: clamp(24px, 4vw, 56px); }
+  .why-col + .why-col { padding-right: 0; padding-left: clamp(24px, 4vw, 56px); border-left: 2px dashed var(--divider); }
+  .why-col h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 800; line-height: 1.1; }
+  .why-col p { color: var(--ink-soft); font-size: 1.08rem; max-width: 52ch; }
+  .why-quote { margin: 0; font-family: var(--display); font-weight: 700; font-style: italic; font-size: clamp(1.3rem, 2.4vw, 1.65rem); line-height: 1.3; color: var(--rust); }
+  .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .skill { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 2px solid var(--ink); border-radius: 18px; }
+  .skill.vocab { background: var(--sage); }
+  .skill.comp { background: var(--sky); }
+  .skill-icon { width: 46px; height: 46px; flex: none; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 12px; background: var(--card); font-family: var(--display); font-weight: 800; font-size: 1.2rem; }
+  .skill-icon svg { width: 24px; height: 24px; }
+  .skill strong { display: block; font-family: var(--display); font-size: 1.15rem; }
+  .skill span.sub { font-size: 0.9rem; font-weight: 700; color: var(--ink-soft); }
+  .cite { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; color: var(--info-text); }
+  .cite svg { width: 20px; height: 20px; flex: none; margin-top: 3px; }
 
   /* ---------- Features ---------- */
   .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
@@ -235,38 +210,16 @@
   .feature-icon svg { width: 26px; height: 26px; }
   .feature h3 { font-size: 1.3rem; font-weight: 700; }
   .feature p { color: var(--ink-soft); font-size: 1rem; }
-  .free-note { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px; font-weight: 700; color: var(--ink-soft); }
-  .free-pill { padding: 8px 18px; border: 2px solid var(--ink); border-radius: 999px; background: var(--sun); box-shadow: var(--lift-sm); font-family: var(--display); font-weight: 800; color: var(--ink); }
 
-  /* ---------- How it works (CEFR ladder) ---------- */
-  .how { background: var(--sky); border-block: 2px solid var(--ink); overflow: hidden; }
-  .ladder { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; align-items: end; counter-reset: step; }
-  .rung { padding: 22px 20px; display: flex; flex-direction: column; gap: 10px; }
-  .rung:nth-child(1) { margin-top: 160px; }
-  .rung:nth-child(2) { margin-top: 120px; }
-  .rung:nth-child(3) { margin-top: 80px; }
-  .rung:nth-child(4) { margin-top: 40px; background: var(--butter); }
-  .rung:nth-child(5) { background: var(--sun); }
-  .step-num { font-family: var(--display); font-weight: 800; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--coral-text); }
-  .rung h3 { font-size: 1.25rem; font-weight: 800; line-height: 1.15; }
-  .rung p { font-size: 0.97rem; color: var(--ink-soft); }
-  .rung-icon { width: 46px; height: 46px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--card); }
-  .rung-icon svg { width: 22px; height: 22px; }
-  .cefr-note { margin-top: 36px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-  .cefr-scale { display: flex; border: 2px solid var(--ink); border-radius: 14px; overflow: hidden; background: var(--card); box-shadow: var(--lift-sm); }
-  .cefr-scale span { padding: 8px 14px; font-family: var(--display); font-weight: 800; border-right: 2px solid var(--ink); }
-  .cefr-scale span:last-child { border-right: 0; }
-  .cefr-scale span:nth-child(-n+2) { background: var(--sage); }
-  .cefr-note p { flex: 1 1 320px; min-width: 0; font-size: 1.02rem; color: var(--ink); }
-
-  /* ---------- Goal ---------- */
-  .goal-card { padding: clamp(28px, 5vw, 56px); background: var(--rust); color: #fff; box-shadow: 0 7px 0 var(--rust-deep); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(24px, 4vw, 48px); align-items: center; }
-  .goal-card h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 800; line-height: 1.05; }
-  .goal-card h2 em { font-style: italic; color: var(--sun); }
-  .goal-sub { margin-top: 14px; font-size: 1.2rem; font-weight: 700; color: #FFEFE6; }
-  .goal-list { display: flex; flex-direction: column; gap: 16px; font-size: 1.05rem; color: #FFF6F0; }
-  .goal-verbs { display: flex; flex-wrap: wrap; gap: 8px; }
-  .goal-verbs span { padding: 6px 14px; border: 2px solid var(--ink); border-radius: 999px; background: var(--card); color: var(--ink); font-family: var(--display); font-weight: 800; box-shadow: var(--lift-sm); }
+  /* ---------- How it works ---------- */
+  .how { background: var(--sky); border-block: 2px solid var(--ink); }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; position: relative; }
+  .steps::before { content: ""; position: absolute; left: 30px; right: calc((100% - 66px) / 4 - 30px); top: 29px; border-top: 3px dashed var(--ink); opacity: .35; }
+  .step { position: relative; display: flex; flex-direction: column; gap: 10px; }
+  .step-num { width: 60px; height: 60px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--card); box-shadow: var(--lift-sm); font-family: var(--display); font-weight: 800; font-size: 1.5rem; }
+  .step:last-child .step-num { background: var(--sun); }
+  .step h3 { font-size: 1.25rem; font-weight: 800; margin-top: 6px; }
+  .step p { color: var(--ink); opacity: .8; font-size: 1rem; }
 
   /* ---------- Horizontal scrollers ---------- */
   .scroller-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
@@ -381,25 +334,27 @@
   /* ---------- Responsive ---------- */
   @media (max-width: 1020px) {
     .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .ladder { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
-    .rung { margin-top: 0 !important; }
-    .rung:nth-child(5) { grid-column: 1 / -1; }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+    .steps::before { display: none; }
   }
   @media (max-width: 860px) {
     section { padding-block: 64px; }
     .hero { padding-block: 40px 56px; }
-    .hero-grid, .story-grid, .research-notes, .goal-card, .join-grid, .recog-card { grid-template-columns: minmax(0, 1fr); }
-    .question, .join-aside { position: static; }
+    .hero-grid, .goal-card, .join-grid, .why-grid { grid-template-columns: minmax(0, 1fr); }
+    .hero-logo { order: -1; max-width: 520px; }
+    .why-col { padding-right: 0; }
+    .why-col + .why-col { padding-left: 0; border-left: 0; border-top: 2px dashed var(--divider); padding-top: 32px; margin-top: 32px; }
+    .join-aside { position: static; }
     .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 36px; }
-    .pair { grid-template-columns: minmax(0, 1fr); justify-items: center; }
-    .pair .pillar { width: 100%; min-height: 0; gap: 28px; }
     .closing-card { grid-template-columns: minmax(0, 1fr); }
+    .goal { padding-block: 0 64px; }
   }
   @media (max-width: 560px) {
     body { font-size: 16px; }
-    .feature-grid, .ladder, .row-2 { grid-template-columns: minmax(0, 1fr); }
+    .feature-grid, .steps, .row-2, .skills { grid-template-columns: minmax(0, 1fr); }
     .hero-ctas .btn { width: 100%; }
     .recog-photos { grid-template-columns: minmax(0, 1fr); }
+    .recog-head { align-items: flex-start; }
     .scroll-btns { display: none; }
   }
 </style>
@@ -444,9 +399,9 @@
       <svg aria-hidden="true"><use href="#i-menu"/></svg>
     </button>
     <ul class="nav-links" id="nav-links" hidden>
-      <li><a href="#story">Our story</a></li>
-      <li><a href="#how">How it works</a></li>
       <li><a href="#playlabs">PlayLabs</a></li>
+      <li><a href="#why">Why ReadFlow</a></li>
+      <li><a href="#features">Features</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#join">Join us</a></li>
       <li><a href="https://www.sarai.quest/s-projects-side-by-side">Projects</a></li>
@@ -460,7 +415,6 @@
   <!-- ===== Hero ===== -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="blob" aria-hidden="true" style="width:420px;height:420px;right:-160px;top:-140px;background:var(--butter);opacity:.7"></div>
-    <div class="blob" aria-hidden="true" style="width:180px;height:180px;right:28%;top:40px;background:var(--sage);opacity:.6"></div>
     <div class="blob" aria-hidden="true" style="width:320px;height:320px;left:-180px;bottom:-60px;background:var(--sky);opacity:.7"></div>
     <div class="wrap">
       <div class="hero-grid">
@@ -473,29 +427,9 @@
             <a class="btn btn-secondary" href="#join">Join the team</a>
           </div>
         </div>
-
-        <div class="card demo" aria-label="Example of ReadFlow's read-aloud feedback">
-          <div class="demo-top">
-            <span class="demo-title">Reading aloud</span>
-            <span class="level-chip">CEFR A1</span>
-          </div>
-          <div class="words" aria-hidden="true">
-            <span class="w ok">The</span><span class="w ok">little</span><span class="w retry">fox</span><span class="w now">ran</span><span class="w next">into</span><span class="w next">the</span><span class="w next">woods.</span>
-          </div>
-          <div class="demo-legend" aria-hidden="true">
-            <span><i style="background:var(--sage)"></i>Read well</span>
-            <span><i style="background:var(--sun);outline:1.5px solid var(--ink)"></i>Reading now</span>
-            <span><i style="background:var(--blush)"></i>Try again</span>
-          </div>
-          <div class="demo-feedback">
-            <svg aria-hidden="true"><use href="#i-mic"/></svg>
-            <span>Almost! Say “fox” again: <strong>f–o–x</strong>.</span>
-          </div>
-          <div>
-            <div class="bar-row"><span>Progress to A2</span><span style="color:var(--ink-soft)">Level up at 80%</span></div>
-            <div class="bar" role="img" aria-label="Example progress bar, about two thirds of the way to the next level"><div></div></div>
-          </div>
-        </div>
+        <figure class="hero-logo">
+          <img id="hero-logo-img" src="readflowlogo.jpeg" alt="ReadFlow logo" width="988" height="551">
+        </figure>
       </div>
 
       <div class="stats">
@@ -510,70 +444,63 @@
   <!-- ===== Official recognition ===== -->
   <section class="recognition" id="recognition" aria-labelledby="recog-title">
     <div class="wrap">
-      <div class="card recog-card no-photos" id="recog-card">
-        <div class="recog-copy">
-          <div class="seal">
-            <span class="seal-icon"><svg aria-hidden="true"><use href="#i-seal"/></svg></span>
-            <span class="badge">Official recognition</span>
-          </div>
-          <h2 id="recog-title">Recognised and approved by the Zilla Parishad Amravati.</h2>
-          <p>We have official recognition and approval from <strong>District Education Officer Mr. Kaluse</strong> and the <strong>Zilla Parishad Amravati, Education Department (Primary)</strong>.</p>
-          <p>The department shared wonderful, encouraging feedback, specifically appreciating our efforts and recognising ReadFlow's strong alignment with the <strong>FLN Mission</strong> and <strong>NIPUN Bharat</strong>, a national government initiative aimed at ensuring every child attains foundational literacy.</p>
-          <div class="chips">
-            <span class="chip"><svg aria-hidden="true"><use href="#i-tick"/></svg>FLN Mission</span>
-            <span class="chip"><svg aria-hidden="true"><use href="#i-tick"/></svg>NIPUN Bharat</span>
-            <span class="chip"><span data-setting="students">500+</span><span>students</span></span>
-            <span class="chip"><span data-setting="schools">10+</span><span>local schools</span></span>
-          </div>
+      <div class="card recog-card">
+        <div class="recog-head">
+          <span class="seal-icon"><svg aria-hidden="true"><use href="#i-seal"/></svg></span>
+          <h2 id="recog-title">Recognised and approved by the District Education Officer and the Zilla Parishad Amravati, Education Department</h2>
         </div>
         <div class="recog-photos" id="recog-photos" hidden></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== Story ===== -->
-  <section id="story" aria-labelledby="story-title">
-    <div class="wrap story-grid">
-      <div class="question">
-        <span class="badge">Our story</span>
-        <span class="q-mark" aria-hidden="true">?</span>
-        <h2 id="story-title" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">It all started with a question</h2>
-        <blockquote>Are we actually teaching children to read, or are we just teaching them to <em>pronounce words?</em></blockquote>
-      </div>
-      <div class="story-body">
-        <p><strong>It all started with a question we kept coming back to during our reading workshops.</strong></p>
-        <p>In most classrooms, we noticed, reading instruction focuses heavily on spelling, grammar, and pronunciation. So we decided to dig deeper. Research shows that vocabulary and comprehension are far stronger long-term markers of reading success, especially for children (Reed et al., 2016; Oakhill &amp; Cain, 2012; Hjetland et al., 2017). Out of this frustration, ReadFlow was born.</p>
-        <p>ReadFlow is a free, research-based, gamified reading platform for children aged 5 to 11. It uses the Common European Framework of Reference for Languages (CEFR) to assess reading ability and personalise practice. While ReadFlow covers pronunciation, reading speed, and spelling, we place a much stronger emphasis on reading comprehension and building vocabulary.</p>
-        <p>We are also designing it specifically to support dyslexic and neurodivergent learners.</p>
-        <p>What started as a rough concept on a whiteboard is now a living project. ReadFlow is officially integrated into the curriculum of <strong><span data-setting="schools">10+</span> schools</strong>, reaching <strong><span data-setting="students">500+</span> students</strong>.</p>
+  <!-- ===== Our goal ===== -->
+  <section class="goal" id="goal" aria-labelledby="goal-title">
+    <div class="wrap">
+      <div class="card goal-card">
+        <h2 id="goal-title">Our goal? To make more <em>confident readers.</em></h2>
+        <p>We want to make reading more personalised, interactive, and fun, so every child gets practice that fits them and progress they can see.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== Research ===== -->
-  <section class="research" id="research" aria-labelledby="research-title">
+  <!-- ===== PlayLabs ===== -->
+  <section id="playlabs" aria-labelledby="playlabs-title" style="padding-top:0">
     <div class="wrap">
-      <div class="section-head">
-        <span class="badge">The research</span>
-        <h2 id="research-title">What really builds reading <em class="hl">proficiency?</em></h2>
-      </div>
-      <div class="pair">
-        <div class="card pillar vocab">
-          <span class="pillar-icon" aria-hidden="true">Aa</span>
-          <div><h3>Vocabulary</h3><p>Knowing what words mean</p></div>
+      <div class="scroller-head">
+        <div class="section-head">
+          <h2 id="playlabs-title">ReadFlow PlayLabs</h2>
+          <p>Our hands-on sessions that bring interactive reading activities into classrooms.</p>
         </div>
-        <span class="plus" aria-hidden="true">+</span>
-        <div class="card pillar comp">
-          <span class="pillar-icon"><svg aria-hidden="true"><use href="#i-bulb"/></svg></span>
-          <div><h3>Comprehension</h3><p>Understanding what you read</p></div>
+        <div class="scroll-btns" data-for="playlabs-track">
+          <button class="scroll-btn" type="button" data-dir="-1" aria-label="Scroll PlayLabs left"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+          <button class="scroll-btn" type="button" data-dir="1" aria-label="Scroll PlayLabs right"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
         </div>
       </div>
-      <div class="research-notes">
-        <p><strong>Vocabulary and reading comprehension are the most important markers of reading success. ReadFlow focuses more on these.</strong> Unlike platforms that focus heavily on spelling quizzes and grammar drills, ReadFlow prioritises vocabulary and comprehension while also developing pronunciation, spelling, and grammar. Its assessments reflect the relative importance of these skills in reading development.</p>
-        <div class="cite">
-          <svg aria-hidden="true"><use href="#i-book"/></svg>
-          <span>Research by Reed et al. (2016), Oakhill &amp; Cain (2012), and Hjetland et al. (2017) helped inform our approach.</span>
+    </div>
+    <div class="scroller-outer">
+      <div class="scroller" id="playlabs-track" tabindex="0" role="region" aria-label="PlayLabs sessions, scroll sideways">
+        <p class="empty-note">Loading sessions…</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Why ReadFlow: story + research ===== -->
+  <section class="why" id="why">
+    <div class="wrap why-grid">
+      <div class="why-col">
+        <h2>It started with a question.</h2>
+        <blockquote class="why-quote">“Are we actually teaching children to read, or just teaching them to pronounce words?”</blockquote>
+        <p>In our reading workshops, we noticed most lessons focus on spelling, grammar, and pronunciation. ReadFlow puts understanding first, and we're designing it to support dyslexic and neurodivergent learners too.</p>
+      </div>
+      <div class="why-col">
+        <h2>What the research says.</h2>
+        <div class="skills">
+          <div class="skill vocab"><span class="skill-icon" aria-hidden="true">Aa</span><div><strong>Vocabulary</strong><span class="sub">Knowing what words mean</span></div></div>
+          <div class="skill comp"><span class="skill-icon"><svg aria-hidden="true"><use href="#i-bulb"/></svg></span><div><strong>Comprehension</strong><span class="sub">Understanding what you read</span></div></div>
         </div>
+        <p>These are the strongest markers of reading success, so ReadFlow gives them the most weight while still building pronunciation, spelling, and grammar.</p>
+        <p class="cite"><svg aria-hidden="true"><use href="#i-book"/></svg><span>Research by Reed et al. (2016), Oakhill &amp; Cain (2012), and Hjetland et al. (2017) informed our approach.</span></p>
       </div>
     </div>
   </section>
@@ -582,9 +509,7 @@
   <section id="features" aria-labelledby="features-title">
     <div class="wrap">
       <div class="section-head">
-        <span class="badge">Meet ReadFlow</span>
-        <h2 id="features-title">Research-backed learning. <em class="hl">Game-like challenges.</em> Personalised progress.</h2>
-        <p>Built around the Common European Framework of Reference for Languages (CEFR), ReadFlow assesses each learner's starting level and adapts activities to their ability, allowing them to level up as they demonstrate consistent growth.</p>
+        <h2 id="features-title">Features that set us apart</h2>
       </div>
       <div class="feature-grid">
         <article class="card feature">
@@ -605,7 +530,7 @@
         <article class="card feature">
           <span class="feature-icon" style="background:var(--sky)"><svg aria-hidden="true"><use href="#i-chart"/></svg></span>
           <h3>Progress reports</h3>
-          <p>A progress page with scores, personalised feedback, and weekly summaries.</p>
+          <p>Scores, personalised feedback, and weekly summaries for every child.</p>
         </article>
         <article class="card feature">
           <span class="feature-icon" style="background:var(--butter)"><svg aria-hidden="true"><use href="#i-class"/></svg></span>
@@ -618,94 +543,22 @@
           <p>Designed with dyslexic and neurodivergent learners in mind, from typography to spacing.</p>
         </article>
       </div>
-      <div class="free-note"><span class="free-pill">100% free for all</span><span>No subscriptions, no paywalls. Open it in any browser at readflow.sarai.quest.</span></div>
     </div>
   </section>
 
   <!-- ===== How it works ===== -->
   <section class="how" id="how" aria-labelledby="how-title">
-    <div class="blob" aria-hidden="true" style="width:300px;height:300px;right:-120px;top:-80px;background:var(--butter);opacity:.8"></div>
     <div class="wrap">
       <div class="section-head">
-        <span class="badge">How does it work?</span>
-        <h2 id="how-title">Every child climbs at their own pace.</h2>
-        <p>ReadFlow assesses, adapts, and moves each learner up the CEFR ladder only when they're ready.</p>
+        <h2 id="how-title">How it works</h2>
+        <p>Levels follow the CEFR, an international scale from A1 (beginner) to C2 (advanced).</p>
       </div>
-      <ol class="ladder">
-        <li class="card rung">
-          <span class="rung-icon"><svg aria-hidden="true"><use href="#i-search"/></svg></span>
-          <span class="step-num">Step 1</span>
-          <h3>Short assessment</h3>
-          <p>Determines the child's starting CEFR level.</p>
-        </li>
-        <li class="card rung">
-          <span class="rung-icon"><svg aria-hidden="true"><use href="#i-path"/></svg></span>
-          <span class="step-num">Step 2</span>
-          <h3>Personalised activities</h3>
-          <p>Tailored to the child's current level.</p>
-        </li>
-        <li class="card rung">
-          <span class="rung-icon"><svg aria-hidden="true"><use href="#i-chart"/></svg></span>
-          <span class="step-num">Step 3</span>
-          <h3>ReadFlow monitors performance</h3>
-          <p>Across every activity category, with instant feedback along the way.</p>
-        </li>
-        <li class="card rung">
-          <span class="rung-icon"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
-          <span class="step-num">Step 4</span>
-          <h3>≥80% correct in every category?</h3>
-          <p>Consistent growth across all skills, not just one.</p>
-        </li>
-        <li class="card rung">
-          <span class="rung-icon"><svg aria-hidden="true"><use href="#i-star"/></svg></span>
-          <span class="step-num">Step 5</span>
-          <h3>Level up!</h3>
-          <p>On to the next CEFR level.</p>
-        </li>
+      <ol class="steps">
+        <li class="step"><span class="step-num" aria-hidden="true">1</span><h3>Placement check</h3><p>A short assessment finds each child's starting level.</p></li>
+        <li class="step"><span class="step-num" aria-hidden="true">2</span><h3>Practice at their level</h3><p>Games and activities matched to where they are right now.</p></li>
+        <li class="step"><span class="step-num" aria-hidden="true">3</span><h3>Feedback as they go</h3><p>Instant pronunciation feedback, scores, and weekly summaries.</p></li>
+        <li class="step"><span class="step-num" aria-hidden="true">4</span><h3>Level up</h3><p>80% or more in every skill category unlocks the next level.</p></li>
       </ol>
-      <div class="cefr-note">
-        <div class="cefr-scale" aria-hidden="true"><span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div>
-        <p><strong>What is CEFR?</strong> CEFR is an international language proficiency scale from A1 (beginner) to C2 (advanced). We use it for personalisation.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Our goal ===== -->
-  <section id="goal" aria-labelledby="goal-title">
-    <div class="wrap">
-      <div class="card goal-card">
-        <div>
-          <h2 id="goal-title">Our goal? To make more <em>confident readers!</em></h2>
-          <p class="goal-sub">We want to make reading more personalised, interactive, and fun.</p>
-        </div>
-        <div class="goal-list">
-          <p>Our goal is to move beyond a one-size-fits-all approach to reading by creating an inclusive learning experience that:</p>
-          <div class="goal-verbs"><span>listens</span><span>adapts</span><span>corrects</span><span>challenges</span></div>
-          <p>learners in real time, making reading growth measurable while keeping learning fun.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PlayLabs ===== -->
-  <section id="playlabs" aria-labelledby="playlabs-title">
-    <div class="wrap">
-      <div class="scroller-head">
-        <div class="section-head">
-          <span class="badge">ReadFlow PlayLabs</span>
-          <h2 id="playlabs-title">Reading, brought into the classroom.</h2>
-          <p>Through ReadFlow PlayLabs, we're bringing interactive reading activities into classrooms: hands-on sessions where children play, read aloud, and try ReadFlow together.</p>
-        </div>
-        <div class="scroll-btns" data-for="playlabs-track">
-          <button class="scroll-btn" type="button" data-dir="-1" aria-label="Scroll PlayLabs left"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
-          <button class="scroll-btn" type="button" data-dir="1" aria-label="Scroll PlayLabs right"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
-        </div>
-      </div>
-    </div>
-    <div class="scroller-outer">
-      <div class="scroller" id="playlabs-track" tabindex="0" role="region" aria-label="PlayLabs sessions, scroll sideways">
-        <p class="empty-note">Loading sessions…</p>
-      </div>
     </div>
   </section>
 
@@ -714,8 +567,7 @@
     <div class="wrap">
       <div class="scroller-head">
         <div class="section-head">
-          <span class="badge">What others say</span>
-          <h2 id="voices-title">Heard from classrooms.</h2>
+          <h2 id="voices-title">What others say</h2>
         </div>
         <div class="scroll-btns" data-for="voices-track">
           <button class="scroll-btn" type="button" data-dir="-1" aria-label="Scroll testimonials left"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
@@ -733,7 +585,6 @@
     <div class="wrap">
       <div class="scroller-head">
         <div class="section-head">
-          <span class="badge">The team</span>
           <h2 id="team-title">Who's behind ReadFlow.</h2>
           <p>ReadFlow is a student-led initiative, and we're always looking for passionate people to join the mission.</p>
         </div>
@@ -754,7 +605,6 @@
   <section id="join" aria-labelledby="join-title">
     <div class="wrap join-grid">
       <div class="join-aside">
-        <span class="badge">Join the team</span>
         <h2 id="join-title">Help more children find their flow.</h2>
         <p>We're looking for people who care about reading. Tell us a little about yourself and how you'd like to help, and we'll get back to you.</p>
         <ul class="roles-list">
@@ -928,20 +778,19 @@
 
   function renderRecognition(data) {
     const box = document.getElementById('recog-photos');
-    const card = document.getElementById('recog-card');
     const photos = (data && Array.isArray(data.photos) ? data.photos : []).filter(p => p && p.image).slice(0, 2);
     box.replaceChildren();
-    if (!photos.length) { box.hidden = true; card.classList.add('no-photos'); return; }
+    if (!photos.length) { box.hidden = true; return; }
     photos.forEach(p => box.append(el('figure', { class: 'photo-frame' },
       el('img', { src: src(p.image), alt: p.caption || 'ReadFlow recognition by the Zilla Parishad Amravati', loading: 'lazy' }),
       p.caption && el('figcaption', { text: p.caption }))));
     box.classList.toggle('single', photos.length === 1);
     box.hidden = false;
-    card.classList.remove('no-photos');
   }
 
   function applySettings(s) {
     if (!s) return;
+    if (s.logo) document.getElementById('hero-logo-img').src = src(s.logo);
     document.querySelectorAll('[data-setting]').forEach(n => {
       const v = s[n.dataset.setting];
       if (v) n.textContent = v;

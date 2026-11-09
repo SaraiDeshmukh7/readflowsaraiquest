@@ -112,10 +112,11 @@ collections:
               - { name: caption, label: Caption, widget: string, required: false }
 
       - name: settings
-        label: Numbers & links
+        label: Logo, numbers & links
         file: content/settings.json
         format: json
         fields:
+          - { name: logo, label: Logo (top of the page), widget: image, required: false, hint: "Shown beside “Step by step, word by word.” Any shape works; wide logos look best." }
           - { name: students, label: Students impacted, widget: string, hint: "Shown as written, e.g. 500+" }
           - { name: schools, label: Local schools, widget: string, hint: "Shown as written, e.g. 10+" }
           - { name: instagram, label: Instagram link, widget: string, required: false }
