@@ -1,0 +1,36 @@
+{
+  "sessions": [
+    {
+      "image": "neevamsession.jpeg",
+      "title": "ReadFlow PlayLabs session",
+      "school": "Neevam School",
+      "place": "Amravati",
+      "date": "",
+      "caption": "ReadFlow demo session"
+    },
+    {
+      "image": "orchidsession.jpeg",
+      "title": "ReadFlow PlayLabs session",
+      "school": "Orchid School",
+      "place": "Amravati",
+      "date": "",
+      "caption": "Live demo with students"
+    },
+    {
+      "image": "orchidschoolpresentation.jpg",
+      "title": "Whole-school presentation",
+      "school": "Orchid School",
+      "place": "Amravati",
+      "date": "",
+      "caption": "Introducing ReadFlow to the whole school"
+    },
+    {
+      "image": "tomoaesession.jpeg",
+      "title": "ReadFlow PlayLabs session",
+      "school": "Tomoae Montessori",
+      "place": "Amravati",
+      "date": "",
+      "caption": "Hands-on reading activities"
+    }
+  ]
+}
