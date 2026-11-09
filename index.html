@@ -161,7 +161,7 @@
   .hero h1 { font-size: clamp(2.7rem, 6.4vw, 4.9rem); font-weight: 800; line-height: 1.02; }
   .hero-lead { font-size: 1.22rem; color: var(--ink-soft); max-width: 560px; }
   .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
-  .hero-logo { grid-area: logo; align-self: center; justify-self: center; width: 100%; max-width: 440px; height: auto; }
+  .hero-logo { grid-area: logo; align-self: center; justify-self: center; width: 100%; max-width: 230px; height: auto; }
 
   .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 52px; }
   .stat { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 4px; }
@@ -360,7 +360,7 @@
     section { padding-block: 64px; }
     .hero { padding-block: 40px 56px; }
     .goal-card, .join-grid, .why-grid { grid-template-columns: minmax(0, 1fr); }
-    .hero-grid { grid-template-columns: minmax(0, 1fr) clamp(104px, 30vw, 260px); grid-template-areas: "head logo" "rest rest"; column-gap: 16px; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr) clamp(80px, 22vw, 170px); grid-template-areas: "head logo" "rest rest"; column-gap: 16px; }
     .hero-logo { align-self: end; }
     .hero h1 { font-size: clamp(2.05rem, 8.4vw, 3.6rem); }
     .hero .badge { font-size: 0.68rem; letter-spacing: 0.03em; padding: 5px 10px; }
@@ -452,7 +452,7 @@
             <a class="btn btn-secondary" href="#join">Join the team</a>
           </div>
         </div>
-        <img class="hero-logo" id="hero-logo-img" src="readflow-logo.png" alt="ReadFlow logo: a child reading a book" width="879" height="900">
+        <img class="hero-logo" id="hero-logo-img" src="readflow-icon.png" alt="ReadFlow logo: a child reading a book" width="560" height="485">
       </div>
 
       <div class="stats">
@@ -823,7 +823,7 @@
 
   function applySettings(s) {
     if (!s) return;
-    if (s.logo && s.logo !== 'readflowlogo.jpeg') document.getElementById('hero-logo-img').src = src(s.logo);
+    if (s.logo && !['readflowlogo.jpeg', 'readflow-logo.png'].includes(s.logo)) document.getElementById('hero-logo-img').src = src(s.logo);
     document.querySelectorAll('[data-setting]').forEach(n => {
       const v = s[n.dataset.setting];
       if (v) n.textContent = v;
