@@ -1,0 +1,123 @@
+# ReadFlow website editor (Sveltia CMS)
+# Open <your site>/admin/ and choose "Sign In Using Access Token".
+# Every save commits to the main branch; GitHub Pages republishes in about a minute.
+
+backend:
+  name: github
+  repo: SaraiDeshmukh7/readflowsaraiquest
+  branch: main
+  commit_messages:
+    update: "Update {{collection}} “{{slug}}” from the website editor"
+    uploadMedia: "Upload “{{path}}” from the website editor"
+    deleteMedia: "Delete “{{path}}” from the website editor"
+
+# Uploaded photos land here. The page loads them relative to index.html,
+# so they work on a custom domain and on a github.io sub-path alike.
+media_folder: images/uploads
+public_folder: /images/uploads
+
+media_libraries:
+  default:
+    config:
+      max_file_size: 15000000
+      slugify_filename: true
+      # Phone photos are shrunk and converted to WebP on upload,
+      # so the page stays fast without you resizing anything.
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 1600
+          height: 1600
+
+collections:
+  - name: website
+    label: Website content
+    description: Everything on the ReadFlow page that changes over time.
+    editor:
+      preview: false
+    files:
+      - name: playlabs
+        label: ReadFlow PlayLabs (session photos)
+        file: content/playlabs.json
+        format: json
+        fields:
+          - name: sessions
+            label: Sessions
+            label_singular: Session
+            widget: list
+            add_to_top: true
+            summary: "{{fields.title}} · {{fields.place}}"
+            thumbnail: image
+            hint: The first session is shown first on the page. Drag to reorder.
+            fields:
+              - { name: image, label: Photo, widget: image }
+              - { name: title, label: School or session name, widget: string }
+              - { name: place, label: City, widget: string, required: false }
+              - { name: date, label: Date, widget: string, required: false, hint: "Anything readable, e.g. October 2026" }
+              - { name: caption, label: Short caption, widget: string, required: false, hint: "One line, e.g. Hands-on reading activities" }
+
+      - name: team
+        label: Team members
+        file: content/team.json
+        format: json
+        fields:
+          - name: members
+            label: Members
+            label_singular: Member
+            widget: list
+            summary: "{{fields.name}} · {{fields.role}}"
+            thumbnail: photo
+            fields:
+              - { name: photo, label: Photo, widget: image, required: false, hint: "Optional. Without a photo the card shows their initials." }
+              - { name: name, label: Name, widget: string }
+              - { name: role, label: Role, widget: string }
+              - { name: bio, label: One-line bio, widget: string, required: false }
+              - { name: link, label: "Link (LinkedIn, portfolio…)", widget: string, required: false }
+
+      - name: testimonials
+        label: What others say (testimonials)
+        file: content/testimonials.json
+        format: json
+        fields:
+          - name: items
+            label: Testimonials
+            label_singular: Testimonial
+            widget: list
+            add_to_top: true
+            summary: "{{fields.name}} · {{fields.role}}"
+            hint: The section stays hidden until you add the first testimonial.
+            fields:
+              - { name: quote, label: What they said, widget: text }
+              - { name: name, label: Name, widget: string }
+              - { name: role, label: "Who they are (e.g. Principal, Orchid School)", widget: string, required: false }
+              - { name: photo, label: Photo, widget: image, required: false }
+
+      - name: recognition
+        label: Official recognition photos
+        file: content/recognition.json
+        format: json
+        fields:
+          - name: photos
+            label: Photos
+            label_singular: Photo
+            widget: list
+            max: 2
+            summary: "{{fields.caption}}"
+            thumbnail: image
+            hint: Two photos sit beside the District Education Officer recognition section.
+            fields:
+              - { name: image, label: Photo, widget: image }
+              - { name: caption, label: Caption, widget: string, required: false }
+
+      - name: settings
+        label: Numbers & links
+        file: content/settings.json
+        format: json
+        fields:
+          - { name: students, label: Students impacted, widget: string, hint: "Shown as written, e.g. 500+" }
+          - { name: schools, label: Local schools, widget: string, hint: "Shown as written, e.g. 10+" }
+          - { name: instagram, label: Instagram link, widget: string, required: false }
+          - { name: linkedin, label: LinkedIn link, widget: string, required: false, hint: "Leave empty to hide the LinkedIn link." }
+          - { name: email, label: Contact email shown on the page, widget: string, required: false }
+          - { name: form_email, label: Email that receives “Join the team” applications, widget: string, hint: "The first application sends a one-time confirmation email from FormSubmit to this address — click it once to start receiving applications." }
