@@ -1,11 +1,39 @@
 {
   "members": [
     {
-      "photo": "",
+      "photo": "/images/uploads/59950.webp",
       "name": "Sarai Deshmukh",
       "role": "Founder & Project Lead",
       "bio": "",
       "link": "https://www.sarai.quest"
+    },
+    {
+      "photo": "/images/uploads/67528.webp",
+      "name": "Parnavi Rajnekar",
+      "role": "Lead Coordinator for PlayLabs",
+      "bio": "",
+      "link": ""
+    },
+    {
+      "photo": "/images/uploads/67529.webp",
+      "name": "Veda Bute",
+      "role": "PlayLabs Coordinator",
+      "bio": "",
+      "link": ""
+    },
+    {
+      "photo": "",
+      "name": "Shritika Sharma",
+      "role": "Head of Social Media",
+      "bio": "",
+      "link": ""
+    },
+    {
+      "photo": "",
+      "name": "Jael Samuels",
+      "role": "Head UX Researcher",
+      "bio": "",
+      "link": ""
     }
   ]
 }
