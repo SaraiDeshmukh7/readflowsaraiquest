@@ -2,6 +2,34 @@
   "sessions": [
     {
       "title": "",
+      "school": "St. Francis High School",
+      "place": "Amravati",
+      "date": "READING INSPIRATION DAY",
+      "caption": "50+ 4th graders",
+      "photos": [
+        "/images/uploads/67549.webp",
+        "/images/uploads/67550.webp",
+        "/images/uploads/67551.webp",
+        "/images/uploads/67553.webp",
+        "/images/uploads/67552.webp"
+      ]
+    },
+    {
+      "title": "",
+      "school": "Mother's Pet School",
+      "place": "Amravati",
+      "date": "",
+      "caption": "60+ third graders",
+      "photos": [
+        "/images/uploads/67540.webp",
+        "/images/uploads/67543.webp",
+        "/images/uploads/67539.webp",
+        "/images/uploads/67542.webp",
+        "/images/uploads/67541.webp"
+      ]
+    },
+    {
+      "title": "",
       "school": "Tomoae School",
       "place": "Amravati",
       "date": "",
@@ -18,7 +46,7 @@
       "school": "Neevam School",
       "place": "Amravati",
       "date": "",
-      "caption": "ReadFlow demo session",
+      "caption": "45+ 3rd graders",
       "photos": [
         "neevamsession.jpeg"
       ]
@@ -28,18 +56,17 @@
       "school": "Orchid School",
       "place": "Amravati",
       "date": "",
-      "caption": "Live demo with students and a whole-school presentation",
+      "caption": "30+ 1st graders",
       "photos": [
-        "orchidsession.jpeg",
-        "orchidschoolpresentation.jpg"
+        "orchidsession.jpeg"
       ]
     },
     {
       "title": "",
-      "school": "Tomoae Montessori",
+      "school": "Tomoae Montessori House of Children",
       "place": "Amravati",
       "date": "",
-      "caption": "Hands-on reading activities",
+      "caption": "45+ 1st to 5th graders",
       "photos": [
         "tomoaesession.jpeg"
       ]
