@@ -2,6 +2,19 @@
   "sessions": [
     {
       "title": "",
+      "school": "Tomoae School",
+      "place": "Amravati",
+      "date": "",
+      "caption": "30+ 2nd graders",
+      "photos": [
+        "/images/uploads/61871.webp",
+        "/images/uploads/61869.webp",
+        "/images/uploads/61873.webp",
+        "/images/uploads/61867.webp"
+      ]
+    },
+    {
+      "title": "",
       "school": "Neevam School",
       "place": "Amravati",
       "date": "",
