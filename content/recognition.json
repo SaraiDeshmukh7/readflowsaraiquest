@@ -1,3 +1,12 @@
 {
-  "photos": []
+  "photos": [
+    {
+      "image": "/images/uploads/66040.webp",
+      "caption": ""
+    },
+    {
+      "image": "/images/uploads/67530.webp",
+      "caption": "Official Memorandum from Education Department"
+    }
+  ]
 }
