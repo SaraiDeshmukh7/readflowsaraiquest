@@ -165,7 +165,7 @@
   .stat.sage { background: var(--sage); }
 
   /* ---------- Recognition ---------- */
-  .recognition { padding-block: 8px 72px; }
+  .recognition { padding-block: 0 88px; }
   .recog-card { padding: clamp(24px, 4vw, 40px); display: flex; flex-direction: column; gap: 28px; }
   .recog-head { display: flex; align-items: center; gap: 20px; }
   .recog-head h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.15; }
@@ -178,7 +178,7 @@
   .photo-frame figcaption { font-size: 0.9rem; color: var(--ink-soft); font-weight: 600; }
 
   /* ---------- Goal ---------- */
-  .goal { padding-block: 0 88px; }
+  .goal { padding-block: 8px 40px; }
   .goal-card { padding: clamp(28px, 5vw, 52px); background: var(--sun); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
   .goal-card h2 { font-size: clamp(2rem, 4.2vw, 3rem); font-weight: 800; line-height: 1.05; }
   .goal-card h2 em { font-style: italic; color: var(--rust-deep); }
@@ -204,22 +204,35 @@
   .cite svg { width: 20px; height: 20px; flex: none; margin-top: 3px; }
 
   /* ---------- Features ---------- */
-  .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-  .feature { padding: 26px; display: flex; flex-direction: column; gap: 12px; }
-  .feature-icon { width: 54px; height: 54px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 14px; }
-  .feature-icon svg { width: 26px; height: 26px; }
-  .feature h3 { font-size: 1.3rem; font-weight: 700; }
-  .feature p { color: var(--ink-soft); font-size: 1rem; }
+  .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .feature { padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+  .feature-icon { width: 44px; height: 44px; margin-bottom: 4px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 14px; }
+  .feature-icon svg { width: 22px; height: 22px; }
+  .feature h3 { font-size: 1.12rem; font-weight: 700; }
+  .feature p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.5; }
 
-  /* ---------- How it works ---------- */
-  .how { background: var(--sky); border-block: 2px solid var(--ink); }
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; position: relative; }
-  .steps::before { content: ""; position: absolute; left: 30px; right: calc((100% - 66px) / 4 - 30px); top: 29px; border-top: 3px dashed var(--ink); opacity: .35; }
-  .step { position: relative; display: flex; flex-direction: column; gap: 10px; }
-  .step-num { width: 60px; height: 60px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--card); box-shadow: var(--lift-sm); font-family: var(--display); font-weight: 800; font-size: 1.5rem; }
+  /* ---------- How it works (compact, under features) ---------- */
+  .how-mini { margin-top: 28px; padding: clamp(20px, 3vw, 28px); background: var(--sky); display: flex; flex-direction: column; gap: 22px; }
+  .how-mini-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+  .how-mini-head h3 { font-size: 1.45rem; font-weight: 800; }
+  .how-mini-head p { color: var(--ink); opacity: .8; font-size: 0.95rem; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; position: relative; }
+  .steps::before { content: ""; position: absolute; left: 22px; right: calc((100% - 54px) / 4 - 22px); top: 21px; border-top: 3px dashed var(--ink); opacity: .35; }
+  .step { position: relative; display: flex; flex-direction: column; gap: 6px; }
+  .step-num { width: 44px; height: 44px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; background: var(--card); box-shadow: var(--lift-sm); font-family: var(--display); font-weight: 800; font-size: 1.15rem; }
   .step:last-child .step-num { background: var(--sun); }
-  .step h3 { font-size: 1.25rem; font-weight: 800; margin-top: 6px; }
-  .step p { color: var(--ink); opacity: .8; font-size: 1rem; }
+  .step h4 { margin: 4px 0 0; font-family: var(--display); font-size: 1.05rem; font-weight: 800; }
+  .step p { color: var(--ink); opacity: .8; font-size: 0.92rem; line-height: 1.45; }
+
+  /* ---------- PlayLabs: one photo row per session ---------- */
+  .session-group + .session-group { margin-top: 40px; }
+  .group-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .group-title { font-family: var(--display); font-weight: 800; font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.2; margin: 0; }
+  .group-meta { font-weight: 700; color: var(--muted); font-size: 0.95rem; }
+  .group-caption { color: var(--ink-soft); font-size: 1rem; margin-top: 2px; }
+  .group-count { font-size: 0.85rem; font-weight: 800; color: var(--ink-soft); padding: 4px 10px; border: 1.5px solid var(--ink); border-radius: 999px; background: var(--card); }
+  .photo-card { margin: 0; width: min(420px, 80vw); border: 2px solid var(--ink); border-radius: 20px; overflow: hidden; box-shadow: var(--lift); background: var(--field); }
+  .photo-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 
   /* ---------- Horizontal scrollers ---------- */
   .scroller-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; }
@@ -334,7 +347,7 @@
   /* ---------- Responsive ---------- */
   @media (max-width: 1020px) {
     .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 24px; }
     .steps::before { display: none; }
   }
   @media (max-width: 860px) {
@@ -347,7 +360,8 @@
     .join-aside { position: static; }
     .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 36px; }
     .closing-card { grid-template-columns: minmax(0, 1fr); }
-    .goal { padding-block: 0 64px; }
+    .goal { padding-block: 8px 32px; }
+    .recognition { padding-block: 0 64px; }
   }
   @media (max-width: 560px) {
     body { font-size: 16px; }
@@ -399,9 +413,9 @@
       <svg aria-hidden="true"><use href="#i-menu"/></svg>
     </button>
     <ul class="nav-links" id="nav-links" hidden>
+      <li><a href="#features">Features</a></li>
       <li><a href="#playlabs">PlayLabs</a></li>
       <li><a href="#why">Why ReadFlow</a></li>
-      <li><a href="#features">Features</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#join">Join us</a></li>
       <li><a href="https://www.sarai.quest/s-projects-side-by-side">Projects</a></li>
@@ -441,19 +455,6 @@
     </div>
   </section>
 
-  <!-- ===== Official recognition ===== -->
-  <section class="recognition" id="recognition" aria-labelledby="recog-title">
-    <div class="wrap">
-      <div class="card recog-card">
-        <div class="recog-head">
-          <span class="seal-icon"><svg aria-hidden="true"><use href="#i-seal"/></svg></span>
-          <h2 id="recog-title">Recognised and approved by the District Education Officer and the Zilla Parishad Amravati, Education Department</h2>
-        </div>
-        <div class="recog-photos" id="recog-photos" hidden></div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== Our goal ===== -->
   <section class="goal" id="goal" aria-labelledby="goal-title">
     <div class="wrap">
@@ -464,43 +465,15 @@
     </div>
   </section>
 
-  <!-- ===== PlayLabs ===== -->
-  <section id="playlabs" aria-labelledby="playlabs-title" style="padding-top:0">
+  <!-- ===== Official recognition ===== -->
+  <section class="recognition" id="recognition" aria-labelledby="recog-title">
     <div class="wrap">
-      <div class="scroller-head">
-        <div class="section-head">
-          <h2 id="playlabs-title">ReadFlow PlayLabs</h2>
-          <p>Our hands-on sessions that bring interactive reading activities into classrooms.</p>
+      <div class="card recog-card">
+        <div class="recog-head">
+          <span class="seal-icon"><svg aria-hidden="true"><use href="#i-seal"/></svg></span>
+          <h2 id="recog-title">Recognised and approved by the District Education Officer and the Zilla Parishad Amravati, Education Department</h2>
         </div>
-        <div class="scroll-btns" data-for="playlabs-track">
-          <button class="scroll-btn" type="button" data-dir="-1" aria-label="Scroll PlayLabs left"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
-          <button class="scroll-btn" type="button" data-dir="1" aria-label="Scroll PlayLabs right"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
-        </div>
-      </div>
-    </div>
-    <div class="scroller-outer">
-      <div class="scroller" id="playlabs-track" tabindex="0" role="region" aria-label="PlayLabs sessions, scroll sideways">
-        <p class="empty-note">Loading sessions…</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Why ReadFlow: story + research ===== -->
-  <section class="why" id="why">
-    <div class="wrap why-grid">
-      <div class="why-col">
-        <h2>It started with a question.</h2>
-        <blockquote class="why-quote">“Are we actually teaching children to read, or just teaching them to pronounce words?”</blockquote>
-        <p>In our reading workshops, we noticed most lessons focus on spelling, grammar, and pronunciation. ReadFlow puts understanding first, and we're designing it to support dyslexic and neurodivergent learners too.</p>
-      </div>
-      <div class="why-col">
-        <h2>What the research says.</h2>
-        <div class="skills">
-          <div class="skill vocab"><span class="skill-icon" aria-hidden="true">Aa</span><div><strong>Vocabulary</strong><span class="sub">Knowing what words mean</span></div></div>
-          <div class="skill comp"><span class="skill-icon"><svg aria-hidden="true"><use href="#i-bulb"/></svg></span><div><strong>Comprehension</strong><span class="sub">Understanding what you read</span></div></div>
-        </div>
-        <p>These are the strongest markers of reading success, so ReadFlow gives them the most weight while still building pronunciation, spelling, and grammar.</p>
-        <p class="cite"><svg aria-hidden="true"><use href="#i-book"/></svg><span>Research by Reed et al. (2016), Oakhill &amp; Cain (2012), and Hjetland et al. (2017) informed our approach.</span></p>
+        <div class="recog-photos" id="recog-photos" hidden></div>
       </div>
     </div>
   </section>
@@ -543,22 +516,52 @@
           <p>Designed with dyslexic and neurodivergent learners in mind, from typography to spacing.</p>
         </article>
       </div>
+
+      <div class="card how-mini" id="how">
+        <div class="how-mini-head">
+          <h3>How it works</h3>
+          <p>Levels follow the CEFR, an international scale from A1 (beginner) to C2 (advanced).</p>
+        </div>
+        <ol class="steps">
+          <li class="step"><span class="step-num" aria-hidden="true">1</span><h4>Placement check</h4><p>A short assessment finds each child's starting level.</p></li>
+          <li class="step"><span class="step-num" aria-hidden="true">2</span><h4>Practice at their level</h4><p>Games and activities matched to where they are right now.</p></li>
+          <li class="step"><span class="step-num" aria-hidden="true">3</span><h4>Feedback as they go</h4><p>Instant pronunciation feedback, scores, and weekly summaries.</p></li>
+          <li class="step"><span class="step-num" aria-hidden="true">4</span><h4>Level up</h4><p>80% or more in every skill category unlocks the next level.</p></li>
+        </ol>
+      </div>
     </div>
   </section>
 
-  <!-- ===== How it works ===== -->
-  <section class="how" id="how" aria-labelledby="how-title">
+  <!-- ===== PlayLabs ===== -->
+  <section id="playlabs" aria-labelledby="playlabs-title" style="padding-top:0">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="how-title">How it works</h2>
-        <p>Levels follow the CEFR, an international scale from A1 (beginner) to C2 (advanced).</p>
+        <h2 id="playlabs-title">ReadFlow PlayLabs</h2>
+        <p>Our hands-on sessions that bring interactive reading activities into classrooms.</p>
       </div>
-      <ol class="steps">
-        <li class="step"><span class="step-num" aria-hidden="true">1</span><h3>Placement check</h3><p>A short assessment finds each child's starting level.</p></li>
-        <li class="step"><span class="step-num" aria-hidden="true">2</span><h3>Practice at their level</h3><p>Games and activities matched to where they are right now.</p></li>
-        <li class="step"><span class="step-num" aria-hidden="true">3</span><h3>Feedback as they go</h3><p>Instant pronunciation feedback, scores, and weekly summaries.</p></li>
-        <li class="step"><span class="step-num" aria-hidden="true">4</span><h3>Level up</h3><p>80% or more in every skill category unlocks the next level.</p></li>
-      </ol>
+    </div>
+    <div id="playlabs-list">
+      <div class="wrap"><p class="empty-note">Loading sessions…</p></div>
+    </div>
+  </section>
+
+  <!-- ===== Why ReadFlow: story + research ===== -->
+  <section class="why" id="why">
+    <div class="wrap why-grid">
+      <div class="why-col">
+        <h2>It started with a question.</h2>
+        <blockquote class="why-quote">“Are we actually teaching children to read, or just teaching them to pronounce words?”</blockquote>
+        <p>In our reading workshops, we noticed most lessons focus on spelling, grammar, and pronunciation. ReadFlow puts understanding first, and we're designing it to support dyslexic and neurodivergent learners too.</p>
+      </div>
+      <div class="why-col">
+        <h2>What the research says.</h2>
+        <div class="skills">
+          <div class="skill vocab"><span class="skill-icon" aria-hidden="true">Aa</span><div><strong>Vocabulary</strong><span class="sub">Knowing what words mean</span></div></div>
+          <div class="skill comp"><span class="skill-icon"><svg aria-hidden="true"><use href="#i-bulb"/></svg></span><div><strong>Comprehension</strong><span class="sub">Understanding what you read</span></div></div>
+        </div>
+        <p>These are the strongest markers of reading success, so ReadFlow gives them the most weight while still building pronunciation, spelling, and grammar.</p>
+        <p class="cite"><svg aria-hidden="true"><use href="#i-book"/></svg><span>Research by Reed et al. (2016), Oakhill &amp; Cain (2012), and Hjetland et al. (2017) informed our approach.</span></p>
+      </div>
     </div>
   </section>
 
@@ -670,7 +673,7 @@
     <div class="wrap">
       <div class="card closing-card">
         <div>
-          <h2 id="closing-title">ReadFlow is live. <em>Find your flow.</em></h2>
+          <h2 id="closing-title">ReadFlow is live.</h2>
           <p>Schools, parents, researchers: we'd love to hear from you.</p>
           <div class="socials">
             <a class="social" id="link-instagram" href="https://www.instagram.com/readflow.team/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-insta"/></svg>@readflow.team</a>
@@ -719,20 +722,41 @@
   const safeUrl = (u) => (/^https?:\/\//i.test(u || '') ? u : null);
 
   function renderPlaylabs(data) {
-    const track = document.getElementById('playlabs-track');
-    const items = (data && Array.isArray(data.sessions) ? data.sessions : []).filter(s => s && s.image);
-    track.replaceChildren();
-    if (!items.length) { track.append(el('p', { class: 'empty-note', text: 'New PlayLabs sessions are coming soon.' })); return; }
-    items.forEach((s, i) => {
-      const heading = s.title || s.school || 'PlayLabs session';
-      const meta = [s.title ? s.school : '', s.place, s.date].filter(Boolean).join(' · ');
-      track.append(el('article', { class: 'card session' },
-        el('img', { src: src(s.image), alt: 'ReadFlow PlayLabs: ' + [s.title, s.school].filter(Boolean).join(', '), loading: i < 3 ? 'eager' : 'lazy', decoding: 'async' }),
-        el('div', { class: 'session-info' },
-          el('span', { class: 'session-title', text: heading }),
-          meta && el('span', { class: 'session-meta', text: meta }),
-          s.caption && el('p', { class: 'session-caption', text: s.caption }))));
+    const list = document.getElementById('playlabs-list');
+    const sessions = (data && Array.isArray(data.sessions) ? data.sessions : [])
+      .map(x => ({ ...x, photos: (Array.isArray(x.photos) ? x.photos : [x.photos || x.image]).filter(Boolean) }))
+      .filter(x => x.photos.length);
+    list.replaceChildren();
+    if (!sessions.length) { list.append(el('div', { class: 'wrap' }, el('p', { class: 'empty-note', text: 'New PlayLabs sessions are coming soon.' }))); return; }
+    sessions.forEach((x, gi) => {
+      const heading = x.title || x.school || 'PlayLabs session';
+      const meta = [x.title ? x.school : '', x.place, x.date].filter(Boolean).join(' · ');
+      const id = 'pl-track-' + gi;
+      const btns = el('div', { class: 'scroll-btns', 'data-for': id },
+        el('button', { class: 'scroll-btn', type: 'button', 'data-dir': '-1', 'aria-label': 'Previous photos of ' + heading }, icon('i-left')),
+        el('button', { class: 'scroll-btn', type: 'button', 'data-dir': '1', 'aria-label': 'More photos of ' + heading }, icon('i-right')));
+      const track = el('div', { class: 'scroller', id, tabindex: '0', role: 'region', 'aria-label': heading + ' photos, scroll sideways' });
+      x.photos.forEach((p, pi) => track.append(el('figure', { class: 'photo-card' },
+        el('img', { src: src(p), alt: 'ReadFlow PlayLabs at ' + [x.title, x.school].filter(Boolean).join(', ') + ', photo ' + (pi + 1), loading: gi < 2 && pi < 3 ? 'eager' : 'lazy', decoding: 'async' }))));
+      list.append(el('article', { class: 'session-group' },
+        el('div', { class: 'wrap' },
+          el('div', { class: 'group-head' },
+            el('div', {},
+              el('h3', { class: 'group-title', text: heading }),
+              meta && el('div', { class: 'group-meta', text: meta }),
+              x.caption && el('p', { class: 'group-caption', text: x.caption })),
+            x.photos.length > 1 && btns)),
+        el('div', { class: 'scroller-outer' }, track)));
+      if (x.photos.length > 1) wireScroller(btns);
     });
+  }
+  function icon(id) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('aria-hidden', 'true');
+    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    use.setAttribute('href', '#' + id);
+    svg.append(use);
+    return svg;
   }
 
   function renderTeam(data) {
@@ -812,7 +836,7 @@
     btns.querySelector('[data-dir="-1"]').disabled = track.scrollLeft <= 2;
     btns.querySelector('[data-dir="1"]').disabled = track.scrollLeft >= max;
   }
-  document.querySelectorAll('.scroll-btns').forEach(group => {
+  function wireScroller(group) {
     const track = document.getElementById(group.dataset.for);
     group.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
       const step = Math.max(track.clientWidth * 0.8, 280) * Number(b.dataset.dir);
@@ -820,8 +844,9 @@
     }));
     track.addEventListener('scroll', () => updateButtons(track), { passive: true });
     window.addEventListener('resize', () => updateButtons(track));
-    updateButtons(track);
-  });
+    requestAnimationFrame(() => updateButtons(track));
+  }
+  document.querySelectorAll('.scroll-btns').forEach(wireScroller);
 
   Promise.all(['settings', 'recognition', 'playlabs', 'team', 'testimonials'].map(load))
     .then(([settings, recognition, playlabs, team, testimonials]) => {
@@ -830,7 +855,7 @@
       renderPlaylabs(playlabs);
       renderTeam(team);
       renderVoices(testimonials);
-      ['playlabs-track', 'team-track'].forEach(id => updateButtons(document.getElementById(id)));
+      updateButtons(document.getElementById('team-track'));
     });
 
   /* ---------- Mobile menu ---------- */
